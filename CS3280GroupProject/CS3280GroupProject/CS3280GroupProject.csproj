@@ -79,6 +79,7 @@
     <Compile Include="clsDataAccess.cs" />
     <Compile Include="clsInvoice.cs" />
     <Compile Include="clsItem.cs" />
+    <Compile Include="clsSQLStatements.cs" />
     <Compile Include="frmMainMenu.xaml.cs">
       <DependentUpon>frmMainMenu.xaml</DependentUpon>
     </Compile>
