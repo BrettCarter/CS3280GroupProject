@@ -1,0 +1,16 @@
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\bin\Debug\Group2_3280_Invoice.exe
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\bin\Debug\Group2_3280_Invoice.pdb
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\Group2_3280_Invoice.csprojResolveAssemblyReference.cache
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmMainMenu.baml
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmNewInvoice.baml
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmSearch.baml
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmUpdate.baml
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmMainMenu.g.cs
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmNewInvoice.g.cs
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmSearch.g.cs
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\frmUpdate.g.cs
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\App.g.cs
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\Group2_3280_Invoice_MarkupCompile.cache
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\Group2_3280_Invoice.g.resources
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\Group2_3280_Invoice.exe
+C:\Users\Brett\Documents\Visual Studio 2015\Projects\Group2_3280_Invoice\Group2_3280_Invoice\obj\Debug\Group2_3280_Invoice.pdb
