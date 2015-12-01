@@ -36,3 +36,6 @@ C:\Users\ChaCha\Desktop\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280Gr
 C:\Users\ChaCha\Desktop\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.g.resources
 C:\Users\ChaCha\Desktop\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.Properties.Resources.resources
 C:\Users\ChaCha\Desktop\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.csproj.GenerateResource.Cache
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\bin\Debug\CS3280GroupProject.exe.config
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.exe
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.pdb
