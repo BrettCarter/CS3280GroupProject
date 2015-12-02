@@ -1,0 +1,22 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+	x:Class="Group2_3280_Invoice.frmSearch"
+	x:Name="frmSearchWindow"
+	Title="frmSearch"
+	Width="640" Height="480">
+
+	<Grid x:Name="LayoutRoot">
+		<ListBox x:Name="listInvoice" HorizontalAlignment="Left" Margin="64.487,123.2,0,159.2" Width="180.8"/>
+		<Label Content="Invoice" HorizontalAlignment="Left" Margin="64.487,97.24,0,0" VerticalAlignment="Top"/>
+		<ComboBox x:Name="drpInvoice" Margin="307.4,177.6,198.2,0" VerticalAlignment="Top"/>
+		<ComboBox x:Name="drpDate" Margin="307.4,123.2,198.2,0" VerticalAlignment="Top"/>
+		<ComboBox x:Name="drpCharge" Margin="307.4,0,198.2,190.92" VerticalAlignment="Bottom"/>
+		<Button x:Name="cmdSelectInvoice" Content="Select Invoice" Margin="264.2,0,275.606,62.44" VerticalAlignment="Bottom"/>
+		<Label Content="Date:" Margin="307.4,97.24,280.206,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
+		<Label Content="Invoice #:" Margin="307.4,151.64,250.606,0" VerticalAlignment="Top"/>
+		<Label Content="Charge:" Margin="307.4,203.56,261.4,212.88" d:LayoutOverrides="Height"/>
+		<Label Content="Search" HorizontalAlignment="Left" Margin="264.2,29.6,0,0" VerticalAlignment="Top" FontSize="21.333"/>
+	</Grid>
+</Window>
