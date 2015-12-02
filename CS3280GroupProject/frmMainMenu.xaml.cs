@@ -46,7 +46,7 @@ namespace Group2_3280_Invoice
         private void cmdCreateNew_Click(object sender, RoutedEventArgs e)
         {
             selectItem.ItemsSource = SQLStatements.itemsCollection();
-            txtDate.Text = DateTime.Now.ToString();
+            txtDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
             selectItem.IsEnabled = true;
             cmdAdd.IsEnabled = true;
             cmdDeleteItem.IsEnabled = true;
@@ -114,8 +114,8 @@ namespace Group2_3280_Invoice
                 {
                     items.Add(item);
                 }
-                DateTime date = Convert.ToDateTime(txtDate.Text);
-                SQLStatements.addInvoice(date, txtCost.Text, items);
+
+                SQLStatements.addInvoice(txtDate.Text, txtCost.Text, items);
             }
         }
     }

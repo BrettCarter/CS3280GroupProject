@@ -66,18 +66,16 @@ namespace CS3280GroupProject
             return col_Invoices;
         }
 
-        public void addInvoice(DateTime date, string totalCharge, ObservableCollection<clsItem> items)
+        public void addInvoice(string date, string totalCharge, ObservableCollection<clsItem> items)
         {
-            date.ToString("yyyyMMdd");
             db = new clsDataAccess();
             int iRet = 0;
 
-            string sSQL = "INSERT INTO Invoices( InvoiceDate, TotalCharge) VALUES('" + 
-                date + "','" + totalCharge + "')";
+            string sSQL = "INSERT INTO Invoices( InvoiceDate, TotalCharge) VALUES(#" + 
+                date + "#, " + totalCharge + ")";
             db.ExecuteNonQuery(sSQL);
 
-            string sSQLInvoiceNumber = "SELECT InvoiceNum FROM Invoices WHERE InvoiceDate = #" + 
-                date + "# AND TotalCharge = '" + totalCharge + "'";
+            string sSQLInvoiceNumber = "SELECT MAX(InvoiceNum) FROM Invoices";
 
             DataSet newInvoice = db.ExecuteSQLStatement(sSQLInvoiceNumber, ref iRet);
             string invoiceNumber = newInvoice.Tables[0].Rows[0][0].ToString();
@@ -88,21 +86,8 @@ namespace CS3280GroupProject
                 string sSQLLineItem = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) " +
                     "VALUES('" + invoiceNumber + "', '" + i + "' , '" + item.ItemCode + "')";
                 db.ExecuteNonQuery(sSQLLineItem);
+                i += 1;
             }
-
-            //string sSQLLineItem = @"INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) 
-            //         Values(@invoiceNumber, @i, @itemCode)";
-            //using (var conn = new SqlConnection("...."))
-            //using (var com = new SqlCommand(insertSql, conn))
-            //{
-            //    com.Parameters.AddWithValue("@ID", ID);
-            //    com.Parameters.AddWithValue("@Name", Name);
-            //    com.Parameters.AddWithValue("@Comment", Comment);
-            //    com.Parameters.AddWithValue("@UniqueID", UniqueID);
-            //    com.Parameters.AddWithValue("@Date", DateTime.Now);
-            //    conn.Open();
-            //    com.ExecuteNonQuery();
-            //}
         }
     }
 }
