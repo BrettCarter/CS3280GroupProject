@@ -13,10 +13,11 @@
 		<ComboBox x:Name="drpInvoice" Margin="307.4,177.6,198.2,0" VerticalAlignment="Top"/>
 		<ComboBox x:Name="drpDate" Margin="307.4,123.2,198.2,0" VerticalAlignment="Top"/>
 		<ComboBox x:Name="drpCharge" Margin="307.4,0,198.2,190.92" VerticalAlignment="Bottom"/>
-		<Button x:Name="cmdSelectInvoice" Content="Select Invoice" Margin="264.2,0,275.606,62.44" VerticalAlignment="Bottom"/>
+		<Button x:Name="cmdSelectInvoice" Content="Select Invoice" Margin="264.2,0,275.606,62.44" VerticalAlignment="Bottom" Click="cmdSelectInvoice_Click"/>
 		<Label Content="Date:" Margin="307.4,97.24,280.206,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
 		<Label Content="Invoice #:" Margin="307.4,151.64,250.606,0" VerticalAlignment="Top"/>
 		<Label Content="Charge:" Margin="307.4,203.56,261.4,212.88" d:LayoutOverrides="Height"/>
 		<Label Content="Search" HorizontalAlignment="Left" Margin="264.2,29.6,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-	</Grid>
+        <Button x:Name="btnUpdateSearch" Content="Update Search" HorizontalAlignment="Left" Margin="318,287,0,0" VerticalAlignment="Top" Width="103" Click="btnUpdateSearch_Click"/>
+    </Grid>
 </Window>

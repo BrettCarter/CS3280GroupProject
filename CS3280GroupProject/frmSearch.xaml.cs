@@ -170,11 +170,21 @@ namespace Group2_3280_Invoice
 
         }
 
+        private void btnUpdateSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void cmdSelectInvoice_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         //IF THE SELECT INVOICE BUTTON IS PRESSED
 
         //IF THE UPDATE SEARCH BUTTON IS PRESSED
         //Check to ensure boxes aren't -1, if they are, set respective strings to ""
         //Otherwise, set respective strings to selected combobox items
-        
-	}
+
+    }
 }

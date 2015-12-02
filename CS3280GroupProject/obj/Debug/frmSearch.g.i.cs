@@ -95,6 +95,14 @@ namespace Group2_3280_Invoice {
         #line default
         #line hidden
         
+        
+        #line 21 "..\..\frmSearch.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button btnUpdateSearch;
+        
+        #line default
+        #line hidden
+        
         private bool _contentLoaded;
         
         /// <summary>
@@ -145,6 +153,21 @@ namespace Group2_3280_Invoice {
             return;
             case 7:
             this.cmdSelectInvoice = ((System.Windows.Controls.Button)(target));
+            
+            #line 16 "..\..\frmSearch.xaml"
+            this.cmdSelectInvoice.Click += new System.Windows.RoutedEventHandler(this.cmdSelectInvoice_Click);
+            
+            #line default
+            #line hidden
+            return;
+            case 8:
+            this.btnUpdateSearch = ((System.Windows.Controls.Button)(target));
+            
+            #line 21 "..\..\frmSearch.xaml"
+            this.btnUpdateSearch.Click += new System.Windows.RoutedEventHandler(this.btnUpdateSearch_Click);
+            
+            #line default
+            #line hidden
             return;
             }
             this._contentLoaded = true;
