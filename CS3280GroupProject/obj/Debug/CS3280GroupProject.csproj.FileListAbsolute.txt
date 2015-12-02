@@ -74,3 +74,6 @@ C:\Users\Jacob Dockter\Desktop\CS3280Submissions\CS3280GroupProject-master\CS328
 C:\Users\Jacob Dockter\Desktop\CS3280Submissions\CS3280GroupProject-master\CS3280GroupProject-master\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.g.resources
 C:\Users\Jacob Dockter\Desktop\CS3280Submissions\CS3280GroupProject-master\CS3280GroupProject-master\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.Properties.Resources.resources
 C:\Users\Jacob Dockter\Desktop\CS3280Submissions\CS3280GroupProject-master\CS3280GroupProject-master\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.csproj.GenerateResource.Cache
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\bin\Debug\CS3280GroupProject.exe.config
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.exe
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.pdb
