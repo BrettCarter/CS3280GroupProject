@@ -20,7 +20,6 @@ namespace Group2_3280_Invoice
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-        private frmNewInvoice newInvoiceWindow;
         private frmUpdate updateWindow;
         private frmSearch searchWindow;
         private clsSQLStatements SQLStatements;
@@ -34,26 +33,34 @@ namespace Group2_3280_Invoice
 
             SQLStatements = new clsSQLStatements();
 
-            selectItem.ItemsSource = SQLStatements.itemsCollection();
-
+            lblInvoiceNumber.Visibility = Visibility.Hidden;
+            txtInvoice.Visibility = Visibility.Hidden;
+            selectItem.IsEnabled = false;
+            cmdAdd.IsEnabled = false;
+            cmdDeleteItem.IsEnabled = false;
+            cmdSave.IsEnabled = false;
+            cmdEdit.IsEnabled = false;
+            cmdDelete.IsEnabled = false;
         }
 
         private void cmdCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            newInvoiceWindow = new frmNewInvoice(this);
-            newInvoiceWindow.ShowDialog();
+            selectItem.ItemsSource = SQLStatements.itemsCollection();
+            txtDate.Text = DateTime.Now.ToString();
+            selectItem.IsEnabled = true;
+            cmdAdd.IsEnabled = true;
+            cmdDeleteItem.IsEnabled = true;
+            cmdSave.IsEnabled = true;
         }
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            newInvoiceWindow = new frmNewInvoice(this);
-            newInvoiceWindow.ShowDialog();
+            
         }
 
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
-            newInvoiceWindow = new frmNewInvoice(this);
-            newInvoiceWindow.ShowDialog();
+            
         }
 
         private void mnuUpdate_Click(object sender, RoutedEventArgs e)
@@ -66,6 +73,50 @@ namespace Group2_3280_Invoice
         {
             searchWindow = new frmSearch(this);
             searchWindow.ShowDialog();
+        }
+
+        private void cmdAdd_Click(object sender, RoutedEventArgs e)
+        {
+            if (selectItem.SelectedItem != null)
+            {
+                int total = 0;
+                int itemCost = 0;
+                clsItem item = (clsItem)selectItem.SelectedItem;
+                listItems.Items.Add(item);
+                Int32.TryParse(txtCost.Text, out total);
+                Int32.TryParse(item.Cost, out itemCost);
+                total += itemCost;
+                txtCost.Text = total.ToString();
+            }
+        }
+
+        private void cmdDeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (listItems.SelectedItem != null)
+            {
+                int total = 0;
+                int itemCost = 0;
+                clsItem item = (clsItem)listItems.SelectedItem;
+                listItems.Items.Remove(item);
+                Int32.TryParse(txtCost.Text, out total);
+                Int32.TryParse(item.Cost, out itemCost);
+                total -= itemCost;
+                txtCost.Text = total.ToString();
+            }
+        }
+
+        private void cmdSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (listItems.Items != null)
+            {
+                ObservableCollection<clsItem> items = new ObservableCollection<clsItem>();
+                foreach (clsItem item in listItems.Items)
+                {
+                    items.Add(item);
+                }
+                DateTime date = Convert.ToDateTime(txtDate.Text);
+                SQLStatements.addInvoice(date, txtCost.Text, items);
+            }
         }
     }
 }

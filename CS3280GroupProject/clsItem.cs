@@ -36,7 +36,7 @@ namespace Group2_3280_Invoice
         {
             try
             {
-                return ItemDesc + "$" + Cost;
+                return "$" + Cost + "  " + ItemDesc;
             }
             catch (Exception)
             {

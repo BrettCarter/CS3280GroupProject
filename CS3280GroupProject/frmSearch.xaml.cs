@@ -177,7 +177,7 @@ namespace Group2_3280_Invoice
 
         private void cmdSelectInvoice_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         //IF THE SELECT INVOICE BUTTON IS PRESSED
