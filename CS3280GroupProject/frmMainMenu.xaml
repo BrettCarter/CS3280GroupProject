@@ -22,12 +22,13 @@
         <ComboBox x:Name="selectItem" HorizontalAlignment="Left" Margin="133,152,0,0" VerticalAlignment="Top" Width="198"/>
         <Label x:Name="lblSelect" Content="Select Item&#xA;" HorizontalAlignment="Left" Margin="43,149,0,0" VerticalAlignment="Top" Height="25" Width="74"/>
         <Label x:Name="lblCost" Content="Cost: " HorizontalAlignment="Left" Margin="43,189,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="cmdAdd" Content="Add Item" HorizontalAlignment="Left" Margin="149,0,0,124" VerticalAlignment="Bottom" Width="75" Click="cmdAdd_Click"/>
-        <Button x:Name="cmdDeleteItem" Content="Delete Item" Margin="268,0,0,124" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="74" Click="cmdDeleteItem_Click"/>
+        <Button x:Name="cmdAdd" Content="Add Item" HorizontalAlignment="Left" Margin="149,0,0,145" VerticalAlignment="Bottom" Width="75" Click="cmdAdd_Click"/>
+        <Button x:Name="cmdDeleteItem" Content="Delete Item" Margin="268,0,0,145" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="74" Click="cmdDeleteItem_Click"/>
         <TextBox x:Name="txtCost" HorizontalAlignment="Left" Margin="133,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Text="0" Width="198" IsReadOnly="True"/>
-        <Button x:Name="cmdSave" Content="Save Invoice" HorizontalAlignment="Right" Margin="0,0,166,124" VerticalAlignment="Bottom" Width="75" Click="cmdSave_Click"/>
+        <Button x:Name="cmdSave" Content="Save Invoice" HorizontalAlignment="Right" Margin="0,0,166,145" VerticalAlignment="Bottom" Width="75" Click="cmdSave_Click"/>
         <Label Content="Invoice" HorizontalAlignment="Left" Margin="280,30,0,0" VerticalAlignment="Top" FontSize="21.333"/>
         <TextBox x:Name="txtInvoice" HorizontalAlignment="Left" Margin="325,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" Width="85" IsReadOnly="True" HorizontalContentAlignment="Center"/>
         <Label x:Name="label" Content="$" HorizontalAlignment="Left" Margin="117,189,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="infoLabel" Content="" HorizontalAlignment="Left" Margin="179,323,0,0" VerticalAlignment="Top" Width="261" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>

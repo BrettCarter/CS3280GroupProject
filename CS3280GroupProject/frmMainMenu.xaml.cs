@@ -33,6 +33,7 @@ namespace Group2_3280_Invoice
 
             SQLStatements = new clsSQLStatements();
 
+            infoLabel.Content = "";
             lblInvoiceNumber.Visibility = Visibility.Hidden;
             txtInvoice.Visibility = Visibility.Hidden;
             selectItem.IsEnabled = false;
@@ -45,32 +46,74 @@ namespace Group2_3280_Invoice
 
         private void cmdCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            selectItem.ItemsSource = SQLStatements.itemsCollection();
+            infoLabel.Content = "";
+            txtInvoice.Text = "";
+            lblInvoiceNumber.Visibility = Visibility.Hidden;
+            txtInvoice.Visibility = Visibility.Hidden;
+
+            listItems.Items.Clear();
+            selectItem.Items.Clear();
+            ObservableCollection<clsItem> col_Items = new ObservableCollection<clsItem>();
+            col_Items = SQLStatements.itemsCollection();
+            foreach (clsItem item in col_Items)
+            {
+                selectItem.Items.Add(item);
+            }
+
             txtDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
             selectItem.IsEnabled = true;
             cmdAdd.IsEnabled = true;
             cmdDeleteItem.IsEnabled = true;
             cmdSave.IsEnabled = true;
+            txtCost.Text = "0";
         }
 
         private void cmdEdit_Click(object sender, RoutedEventArgs e)
         {
-            
+            infoLabel.Content = "";
+            selectItem.Items.Clear();
+            ObservableCollection<clsItem> col_Items = new ObservableCollection<clsItem>();
+            col_Items = SQLStatements.itemsCollection();
+            foreach (clsItem item in col_Items)
+            {
+                selectItem.Items.Add(item);
+            }
+
+            selectItem.IsEnabled = true;
+            cmdDeleteItem.IsEnabled = true;
+            cmdAdd.IsEnabled = true;
+            cmdSave.IsEnabled = true;
+            cmdCreateNew.IsEnabled = false;
+            cmdEdit.IsEnabled = false;
+            cmdDelete.IsEnabled = false;
         }
 
         private void cmdDelete_Click(object sender, RoutedEventArgs e)
         {
-            
+            SQLStatements.deleteInvoice(txtInvoice.Text);
+            infoLabel.Content = "Invoice Deleted";
+            txtInvoice.Text = "";
+            lblInvoiceNumber.Visibility = Visibility.Hidden;
+            txtInvoice.Visibility = Visibility.Hidden;
+            cmdEdit.IsEnabled = false;
+            cmdDelete.IsEnabled = false;
+            txtDate.Text = "";
+            txtCost.Text = "0";
+            listItems.Items.Clear();
+            selectItem.IsEnabled = false;
+            selectItem.Items.Clear();
         }
 
         private void mnuUpdate_Click(object sender, RoutedEventArgs e)
         {
+            infoLabel.Content = "";
             updateWindow = new frmUpdate(this);
             updateWindow.ShowDialog();
         }
 
         private void mnuSearch_Click(object sender, RoutedEventArgs e)
         {
+            infoLabel.Content = "";
             searchWindow = new frmSearch(this);
             searchWindow.ShowDialog();
         }
@@ -97,7 +140,14 @@ namespace Group2_3280_Invoice
                 int total = 0;
                 int itemCost = 0;
                 clsItem item = (clsItem)listItems.SelectedItem;
-                listItems.Items.Remove(item);
+                if (listItems.Items.Count == 1)
+                {
+                    listItems.Items.Clear();
+                }
+                else
+                {
+                    listItems.Items.Remove(item);
+                }
                 Int32.TryParse(txtCost.Text, out total);
                 Int32.TryParse(item.Cost, out itemCost);
                 total -= itemCost;
@@ -114,8 +164,51 @@ namespace Group2_3280_Invoice
                 {
                     items.Add(item);
                 }
+                
+                if (txtInvoice.Text == "")
+                {
+                    SQLStatements.addInvoice(txtDate.Text, txtCost.Text, items);
+                    cmdEdit.IsEnabled = false;
+                    cmdDelete.IsEnabled = false;
+                    infoLabel.Content = "Invoice Saved";
+                }
+                else
+                {
+                    SQLStatements.updateInvoice(txtInvoice.Text, txtCost.Text, items);
+                    cmdEdit.IsEnabled = true;
+                    cmdDelete.IsEnabled = true;
+                    infoLabel.Content = "Invoice Updated";
+                }
+                cmdAdd.IsEnabled = false;
+                cmdDeleteItem.IsEnabled = false;
+                cmdSave.IsEnabled = false;
+                cmdCreateNew.IsEnabled = true;
+                selectItem.Items.Clear();
+                selectItem.IsEnabled = false;
+                
+            }
+        }
 
-                SQLStatements.addInvoice(txtDate.Text, txtCost.Text, items);
+        public void insertSelectedInvoice(clsInvoice invoice)
+        {
+            lblInvoiceNumber.Visibility = Visibility.Visible;
+            txtInvoice.Visibility = Visibility.Visible;
+            txtInvoice.Text = invoice.InvoiceNum;
+            txtDate.Text = invoice.InvoiceDate.ToString();
+            txtCost.Text = invoice.TotalCharge;
+            selectItem.Items.Clear();
+            selectItem.IsEnabled = false;
+            cmdAdd.IsEnabled = false;
+            cmdDeleteItem.IsEnabled = false;
+            cmdSave.IsEnabled = false;
+            cmdEdit.IsEnabled = true;
+            cmdDelete.IsEnabled = true;
+            listItems.Items.Clear();
+            ObservableCollection<clsItem> col_Items = new ObservableCollection<clsItem>();
+            col_Items = SQLStatements.invoiceItems(txtInvoice.Text);
+            foreach (clsItem item in col_Items)
+            {
+                listItems.Items.Add(item);
             }
         }
     }

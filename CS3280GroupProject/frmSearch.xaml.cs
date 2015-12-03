@@ -13,20 +13,29 @@ using System.Data;
 
 namespace Group2_3280_Invoice
 {
-	/// <summary>
-	/// Interaction logic for frmSearch.xaml
-	/// </summary>
-	public partial class frmSearch : Window
-	{
+    /// <summary>
+    /// Interaction logic for frmSearch.xaml
+    /// </summary>
+    public partial class frmSearch : Window
+    {
         private MainWindow wnd_mainWindow;
         clsDataAccess db;
 
+        /// <summary>
+        /// Date of Invoice
+        /// </summary>
         string sSelectedDate = "";
+        /// <summary>
+        /// TotalCharge of Invoice
+        /// </summary>
         string sSelectedCharge = "";
+        /// <summary>
+        /// Invoice Number
+        /// </summary>
         string sSelectedInvoice = "";
 
         public frmSearch(object sender)
-		{
+        {
             this.InitializeComponent();
             wnd_mainWindow = (MainWindow)sender;
 
@@ -37,15 +46,26 @@ namespace Group2_3280_Invoice
 
             //Initialize the invoice list
             UpdateList(sSelectedDate, sSelectedCharge, sSelectedInvoice);
-            
+
         }
-        
+
+
+        /// <summary>
+        /// This method Updates the list on the left side of the form, showing a list of all invoices based on the selections
+        /// on the right side dropboxes.
+        /// </summary>
+        /// <param name="Date">Date</param>
+        /// <param name="Charge">TotalCharge</param>
+        /// <param name="InvoiceNum">Invoice Number</param>
         public void UpdateList(string Date, string Charge, string InvoiceNum)
         {
             string sSQL;    //Holds an SQL statement
             int iRet = 0;   //Number of return values
             DataSet ds = new DataSet();
             clsInvoice invoice;
+
+            //Empties the list so that duplicates are not shown
+            listInvoice.Items.Clear();
 
             //If the form is just opened, the defaults, show all invoices
             if (drpDate.SelectedIndex == -1 && drpCharge.SelectedIndex == -1 && drpInvoice.SelectedIndex == -1)
@@ -54,64 +74,68 @@ namespace Group2_3280_Invoice
                     "FROM Invoices";
                 ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //If only the date
-            else if (Date != "")
+            //If only the date is not empty
+            else if (Date != "" && Charge == "" && InvoiceNum == "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
-                    "WHERE InvoiceDate =" + Date;
+                    "FROM Invoices " +
+                    "WHERE InvoiceDate = #" + Date + "#";
                 ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //if only the charge
-            else if (Charge != "")
+            //if only the charge
+            else if (Charge != "" && Date == "" && InvoiceNum == "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
+                    "FROM Invoices " +
                     "WHERE TotalCharge =" + Charge;
                 ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //if only the invoicenum
-            else if (InvoiceNum != "")
+            //if only the invoicenum
+            else if (InvoiceNum != "" && Charge == "" && Date == "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
+                    "FROM Invoices " +
                     "WHERE InvoiceNum =" + InvoiceNum;
                 ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //if the invoicenum and date
-            else if (InvoiceNum != "" && Date != "")
+            //if the invoicenum and date
+            else if (InvoiceNum != "" && Date != "" && Charge == "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
-                    "WHERE InvoiceDate =" + Date +
-                    "AND InvoiceNum =" + InvoiceNum;
+                    "FROM Invoices " +
+                    "WHERE InvoiceDate = #" + Date + "#" +
+                    " AND InvoiceNum =" + InvoiceNum;
+                ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //if the charge and date
-            else if (Charge != "" && Date != "")
+            //if the charge and date
+            else if (Charge != "" && Date != "" && InvoiceNum == "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
-                    "WHERE InvoiceDate =" + Date +
-                    "AND TotalCharge =" + Charge;
+                    "FROM Invoices " +
+                    "WHERE InvoiceDate = #" + Date + "#" +
+                    " AND TotalCharge =" + Charge;
+                ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //if the invoicenum and charge
-            else if (InvoiceNum != "" && Charge != "")
+            //if the invoicenum and charge
+            else if (InvoiceNum != "" && Charge != "" && Date == "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
-                    "WHERE Charge =" + Charge +
-                    "AND InvoiceNum =" + InvoiceNum;
+                    "FROM Invoices " +
+                    "WHERE TotalCharge =" + Charge +
+                    " AND InvoiceNum =" + InvoiceNum;
+                ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //if everything
+            //if everything
             else if (InvoiceNum != "" && Date != "" && Charge != "")
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
-                    "FROM Invoices" +
-                    "WHERE InvoiceDate =" + Date +
-                    "AND InvoiceNum =" + InvoiceNum +
-                    "AND Charge =" + Charge;
+                    "FROM Invoices " +
+                    "WHERE InvoiceDate = #" + Date + "#" +
+                    " AND TotalCharge =" + Charge +
+                    " AND InvoiceNum =" + InvoiceNum;
+                ds = db.ExecuteSQLStatement(sSQL, ref iRet);
             }
-                //insurance
+            //insurance
             else
             {
                 sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
@@ -135,10 +159,19 @@ namespace Group2_3280_Invoice
 
                 listInvoice.Items.Add(invoice);
             }
+
+            //Reset the drop boxes so that a new search can be completed without closing the window
+            drpDate.SelectedIndex = -1;
+            drpCharge.SelectedIndex = -1;
+            drpInvoice.SelectedIndex = -1;
+
         }
 
-        //This populates the drops, this needs to be separate from Update List, because
-        //update list will only show information based on these selections
+        /// <summary>
+        /// This method populates the drops on the right side of the Search Form
+        /// This needs to be separate from UpdateList because UpdateList has
+        /// limiters, where these always show all items.
+        /// </summary>
         public void PopulateDrops()
         {
             string sSQL;    //Holds an SQL statement
@@ -170,21 +203,58 @@ namespace Group2_3280_Invoice
 
         }
 
+
+        /// <summary>
+        /// This button updates the search list based on all drop box selections
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdateSearch_Click(object sender, RoutedEventArgs e)
         {
+            //Select item, if item is emtpy, set string to empty, otherwise set string to item
+            if (drpDate.SelectedIndex == -1)
+            {
+                sSelectedDate = "";
+            }
+            else
+            {
+                sSelectedDate = drpDate.SelectedItem.ToString();
+            }
+            if (drpCharge.SelectedIndex == -1)
+            {
+                sSelectedCharge = "";
+            }
+            else
+            {
+                sSelectedCharge = drpCharge.SelectedItem.ToString();
+            }
+            if (drpInvoice.SelectedIndex == -1)
+            {
+                sSelectedInvoice = "";
+            }
+            else
+            {
+                sSelectedInvoice = drpInvoice.SelectedItem.ToString();
+            }
+
+            UpdateList(sSelectedDate, sSelectedCharge, sSelectedInvoice);
 
         }
 
+        /// <summary>
+        /// This button will take the selected Invoice and send it back to the main menu to
+        /// open up for edit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmdSelectInvoice_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (listInvoice.SelectedItem != null)
+            {
+                clsInvoice selectedInvoice = (clsInvoice)listInvoice.SelectedItem;
+                wnd_mainWindow.insertSelectedInvoice(selectedInvoice);
+                this.Close();
+            }
         }
-
-        //IF THE SELECT INVOICE BUTTON IS PRESSED
-
-        //IF THE UPDATE SEARCH BUTTON IS PRESSED
-        //Check to ensure boxes aren't -1, if they are, set respective strings to ""
-        //Otherwise, set respective strings to selected combobox items
-
     }
 }

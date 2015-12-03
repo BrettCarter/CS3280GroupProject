@@ -89,5 +89,76 @@ namespace CS3280GroupProject
                 i += 1;
             }
         }
+
+        public void updateInvoice(string invoiceNum, string totalCharge, ObservableCollection<clsItem> items)
+        {
+            db = new clsDataAccess();
+
+            string sSQL = "UPDATE Invoices " +
+                "SET TotalCharge = '" + totalCharge + 
+                "' WHERE InvoiceNum = " + invoiceNum;
+            db.ExecuteNonQuery(sSQL);
+
+            sSQL = "Delete FROM LineItems WHERE InvoiceNum = " + invoiceNum;
+            db.ExecuteNonQuery(sSQL);
+
+            int i = 1;
+            foreach (clsItem item in items)
+            {
+                string sSQLLineItem = "INSERT INTO LineItems(InvoiceNum, LineItemNum, ItemCode) " +
+                    "VALUES('" + invoiceNum + "', '" + i + "' , '" + item.ItemCode + "')";
+                db.ExecuteNonQuery(sSQLLineItem);
+                i += 1;
+            }
+        }
+
+        public ObservableCollection<clsItem> invoiceItems(string invoiceNumber)
+        {
+            db = new clsDataAccess();
+            ObservableCollection<clsItem> col_Items = new ObservableCollection<clsItem>();
+            List<string> itemCode = new List<string>();
+            string sSQL;    //Holds an SQL statement
+            int iRet = 0;   //Number of return values
+            ds = new DataSet(); //Holds the return values
+            clsItem items; //Used to load the return values into the combo box
+            sSQL = "SELECT ItemCode FROM LineItems "
+                + "WHERE InvoiceNum = " + invoiceNumber;
+
+            ds = db.ExecuteSQLStatement(sSQL, ref iRet);
+
+            // adds all of the different item codes on the invoice to a list
+            for (int i = 0; i < iRet; i++)
+            {
+                itemCode.Add(ds.Tables[0].Rows[i]["ItemCode"].ToString());
+            }
+
+            if (itemCode.Count > 0)
+            {
+                foreach (string code in itemCode)
+                {
+                    sSQL = "SELECT ItemCode, ItemDesc, Cost FROM ItemDesc "
+                        + "WHERE ItemCode = '" + code + "'";
+
+                    ds = db.ExecuteSQLStatement(sSQL, ref iRet);
+
+                    items = new clsItem();
+
+                    items.ItemCode = ds.Tables[0].Rows[0][0].ToString();
+                    items.ItemDesc = ds.Tables[0].Rows[0]["ItemDesc"].ToString();
+                    items.Cost = ds.Tables[0].Rows[0]["Cost"].ToString();
+
+                    col_Items.Add(items);
+                }
+            }
+            return col_Items;
+        }
+
+        public void deleteInvoice(string invoiceNum)
+        {
+            string sSQL = "Delete FROM LineItems WHERE InvoiceNum = " + invoiceNum;
+            db.ExecuteNonQuery(sSQL);
+            sSQL = "Delete FROM Invoices WHERE InvoiceNum = " + invoiceNum;
+            db.ExecuteNonQuery(sSQL);
+        }
     }
 }
