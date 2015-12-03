@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using System.Reflection;
 
 namespace Group2_3280_Invoice
 {
@@ -249,11 +250,18 @@ namespace Group2_3280_Invoice
         /// <param name="e"></param>
         private void cmdSelectInvoice_Click(object sender, RoutedEventArgs e)
         {
-            if (listInvoice.SelectedItem != null)
+            try
             {
-                clsInvoice selectedInvoice = (clsInvoice)listInvoice.SelectedItem;
-                wnd_mainWindow.insertSelectedInvoice(selectedInvoice);
-                this.Close();
+                if (listInvoice.SelectedItem != null)
+                {
+                    clsInvoice selectedInvoice = (clsInvoice)listInvoice.SelectedItem;
+                    wnd_mainWindow.insertSelectedInvoice(selectedInvoice);
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
             }
         }
     }

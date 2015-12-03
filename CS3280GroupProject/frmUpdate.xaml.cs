@@ -10,40 +10,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
+using System.Data.OleDb;
+using System.IO;
+using System.Reflection;
 
 namespace Group2_3280_Invoice
 {
-	/// <summary>
-	/// Interaction logic for frmUpdate.xaml
-	/// </summary>
-	public partial class frmUpdate : Window
-	{
+    /// <summary>
+    /// Interaction logic for frmUpdate.xaml
+    /// </summary>
+    public partial class frmUpdate : Window
+    {
         private MainWindow wnd_mainWindow;
         clsDataAccess db;
 
         public frmUpdate(object sender)
-		{
+        {
             this.InitializeComponent();
             wnd_mainWindow = (MainWindow)sender;
             db = new clsDataAccess();
 
             UpdateBox();
-            
-        }
-
-        private void cmdAddItem_Click(object sender, RoutedEventArgs e)
-        {
-            boxListItem.Items.Clear();
-            string sNewName = txtName.Text;
-            string sNewDesc = txtDesc.Text;
-            string sNewCost = txtCost.Text;
-
-            string sSQL = "INSERT INTO ItemDesc( ItemCode, ItemDesc, Cost) VALUES('" + sNewName + "','" + sNewDesc + "','" + sNewCost + "')";
-            db.ExecuteNonQuery(sSQL);
-            UpdateBox();
 
         }
-
 
         public void UpdateBox()
         {
@@ -67,5 +56,77 @@ namespace Group2_3280_Invoice
                 boxListItem.Items.Add(item);
             }
         }
-	}
+
+        private void cmdAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            boxListItem.Items.Clear();
+            string sNewName = txtName.Text;
+            string sNewDesc = txtDesc.Text;
+            string sNewCost = txtCost.Text;
+
+            string sSQL = "INSERT INTO ItemDesc( ItemCode, ItemDesc, Cost) VALUES('" + sNewName + "','" + sNewDesc + "','" + sNewCost + "')";
+            db.ExecuteNonQuery(sSQL);
+            UpdateBox();
+
+        }
+
+        private void cmdDeleteItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+
+                clsItem currentItem = (clsItem)boxListItem.SelectedItem;
+                String sItemCode = currentItem.ItemCode;
+
+
+                String sSQL = "Delete FROM ItemDesc " +
+                    "Where ItemCode = '" + sItemCode + " ' ";
+
+                db.ExecuteNonQuery(sSQL);
+                boxListItem.Items.Clear();
+                UpdateBox();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
+
+        }
+
+        private void cmdClose_Click(object sender, RoutedEventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void cmdEditItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtCost.Text != "")
+            {
+                String sSQL = "UPDATE ItemDesc SET Cost = '" + txtCost.Text + "' " +
+                    "WHERE ItemCode = '" + txtName.Text + "'";
+                db.ExecuteNonQuery(sSQL);
+                boxListItem.Items.Clear();
+                UpdateBox();
+            }
+
+            if (txtDesc.Text != "")
+            {
+                String sSQL = "UPDATE ItemDesc SET ItemDesc = '" + txtDesc.Text + "' " +
+                    "WHERE ItemCode = '" + txtName.Text + "'";
+                db.ExecuteNonQuery(sSQL);
+                boxListItem.Items.Clear();
+                UpdateBox();
+            }
+
+
+
+        }
+
+
+
+    }
 }
+
+
