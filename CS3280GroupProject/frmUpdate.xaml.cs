@@ -61,9 +61,10 @@ namespace Group2_3280_Invoice
         {
             try
             {
-                string sNewName = txtName.Text;
-                string sNewDesc = txtDesc.Text;
-                string sNewCost = txtCost.Text;
+                //JD added .Trim() to ensure no extra spaces
+                string sNewName = txtName.Text.Trim();
+                string sNewDesc = txtDesc.Text.Trim();
+                string sNewCost = txtCost.Text.Trim();
                 int iRet = 0;
                 if (sNewName != "" && sNewDesc != "" && sNewCost != "")
                 {
