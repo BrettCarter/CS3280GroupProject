@@ -7,19 +7,20 @@
 	Title="frmUpdate"
 	Width="640" Height="480">
 
-	<Grid x:Name="LayoutRoot">
-		<ListBox x:Name="boxListItem" HorizontalAlignment="Right" Height="118.76" Margin="0,100.8,78.2,0" VerticalAlignment="Top" Width="161.6"/>
-		<Label x:Name="lblItems" Content="Items" HorizontalAlignment="Right" Margin="0,74.84,200.833,0" VerticalAlignment="Top"/>
-		<Label Content="Item Name:" HorizontalAlignment="Left" Margin="76.2,96.8,0,0" VerticalAlignment="Top"/>
-		<Label Content="Item Desc:" HorizontalAlignment="Left" Margin="76.2,148.8,0,0" VerticalAlignment="Top"/>
-		<Label Content="Item Cost:" HorizontalAlignment="Left" Margin="76.2,197.6,0,218.84" d:LayoutOverrides="Height"/>
-		<TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="165,100.8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="118.383"/>
-		<TextBox x:Name="txtDesc" HorizontalAlignment="Left" Margin="165,156.8,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="118.383"/>
-		<TextBox x:Name="txtCost" HorizontalAlignment="Left" Margin="165,201.6,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="118.383"/>
-		<Button x:Name="cmdAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="136.98,0,0,107.24" VerticalAlignment="Bottom" Width="75" Click="cmdAddItem_Click"/>
-		<Button x:Name="cmdEditItem" Content="Edit Item" Margin="269,0,281.6,107.24" VerticalAlignment="Bottom"/>
-		<Button x:Name="cmdDeleteItem" Content="Delete Item" HorizontalAlignment="Right" Margin="0,0,140,107.24" VerticalAlignment="Bottom" Width="75"/>
-		<Button x:Name="cmdClose" Content="Close" Margin="269,0,281.6,52.84" VerticalAlignment="Bottom"/>
-		<Label x:Name="Add_Edit_Items" Content="Add/Edit Items" HorizontalAlignment="Left" Margin="235.517,36.466,0,0" VerticalAlignment="Top" FontSize="21.333" RenderTransformOrigin="0.452,0.313"/>
-	</Grid>
+    <Grid x:Name="LayoutRoot">
+        <ListBox x:Name="boxListItem" HorizontalAlignment="Right" Height="118.76" Margin="0,100.8,78.2,0" VerticalAlignment="Top" Width="161.6" SelectionChanged="selectedItemChanged"/>
+        <Label x:Name="lblItems" Content="Items" HorizontalAlignment="Right" Margin="0,74.84,200.833,0" VerticalAlignment="Top"/>
+        <Label Content="Item Code:" HorizontalAlignment="Left" Margin="76.2,96.8,0,0" VerticalAlignment="Top"/>
+        <Label Content="Item Desc:" HorizontalAlignment="Left" Margin="76.2,148.8,0,0" VerticalAlignment="Top"/>
+        <Label Content="Item Cost:" HorizontalAlignment="Left" Margin="76.2,197.6,0,218.84" d:LayoutOverrides="Height"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="165,100.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118.383"/>
+        <TextBox x:Name="txtDesc" HorizontalAlignment="Left" Margin="165,156.8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118.383"/>
+        <TextBox x:Name="txtCost" HorizontalAlignment="Left" Margin="165,201.6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118.383"/>
+        <Button x:Name="cmdAddItem" Content="Add Item" HorizontalAlignment="Left" Margin="136.98,0,0,107.24" VerticalAlignment="Bottom" Width="75" Click="cmdAddItem_Click"/>
+        <Button x:Name="cmdEditItem" Content="Edit Item" Margin="269,0,281.6,107.24" VerticalAlignment="Bottom" Click="cmdEditItem_Click"/>
+        <Button x:Name="cmdDeleteItem" Content="Delete Item" HorizontalAlignment="Right" Margin="0,0,140,107.24" VerticalAlignment="Bottom" Width="75" Click="cmdDeleteItem_Click"/>
+        <Button x:Name="cmdClose" Content="Close" Margin="269,0,281.6,52.84" VerticalAlignment="Bottom" Click="cmdClose_Click"/>
+        <Label x:Name="Add_Edit_Items" Content="Add/Edit Items" HorizontalAlignment="Left" Margin="235.517,36.466,0,0" VerticalAlignment="Top" FontSize="21.333" RenderTransformOrigin="0.452,0.313"/>
+        <Label x:Name="statusLabel" Content="" HorizontalAlignment="Left" Margin="137,268,0,0" VerticalAlignment="Top" Width="355" HorizontalContentAlignment="Center"/>
+    </Grid>
 </Window>

@@ -34,7 +34,7 @@ namespace Group2_3280_Invoice
             Application.Current.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
             //ResourceDictionary skin = new ResourceDictionary();
-            //skin.Source = new Uri(@"ExpressionDark.xaml", UriKind.Absolute);
+            //skin.Source = new Uri(@"/CS3280GroupProject/ExpressionDark.xaml", UriKind.Absolute);
             //App.Current.Resources.MergedDictionaries.Add(skin);
 
             try
@@ -80,7 +80,7 @@ namespace Group2_3280_Invoice
                     selectItem.Items.Add(item);
                 }
 
-                txtDate.Text = DateTime.Now.ToString("MM/dd/yyyy");
+                txtDate.Text = DateTime.Now.ToString();
                 selectItem.IsEnabled = true;
                 cmdAdd.IsEnabled = true;
                 cmdDeleteItem.IsEnabled = true;

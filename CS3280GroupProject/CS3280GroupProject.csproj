@@ -92,6 +92,10 @@
     <Compile Include="frmUpdate.xaml.cs">
       <DependentUpon>frmUpdate.xaml</DependentUpon>
     </Compile>
+    <Page Include="Themes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

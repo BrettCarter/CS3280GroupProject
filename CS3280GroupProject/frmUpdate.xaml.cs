@@ -59,15 +59,41 @@ namespace Group2_3280_Invoice
 
         private void cmdAddItem_Click(object sender, RoutedEventArgs e)
         {
-            boxListItem.Items.Clear();
-            string sNewName = txtName.Text;
-            string sNewDesc = txtDesc.Text;
-            string sNewCost = txtCost.Text;
+            try
+            {
+                string sNewName = txtName.Text;
+                string sNewDesc = txtDesc.Text;
+                string sNewCost = txtCost.Text;
+                int iRet = 0;
+                if (sNewName != "" && sNewDesc != "" && sNewCost != "")
+                {
+                    string sSQLCheck = "SELECT * FROM ItemDesc WHERE ItemCode = '" + sNewName + "'";
+                    db.ExecuteSQLStatement(sSQLCheck, ref iRet);
 
-            string sSQL = "INSERT INTO ItemDesc( ItemCode, ItemDesc, Cost) VALUES('" + sNewName + "','" + sNewDesc + "','" + sNewCost + "')";
-            db.ExecuteNonQuery(sSQL);
-            UpdateBox();
+                    if (iRet == 0)
+                    {
+                        boxListItem.Items.Clear();
+                        string sSQL = "INSERT INTO ItemDesc( ItemCode, ItemDesc, Cost) VALUES('" + sNewName + "','" + sNewDesc + "','" + sNewCost + "')";
+                        db.ExecuteNonQuery(sSQL);
+                        UpdateBox();
+                        statusLabel.Content = "Item Added";
+                    }
+                    else
+                    {
+                        statusLabel.Content = "This item code already exists";
+                    }
+                }
+                else
+                {
+                    statusLabel.Content = "Please fill out all of the information";
+                }
 
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(MethodInfo.GetCurrentMethod().DeclaringType.Name + "." + MethodInfo.GetCurrentMethod().Name + " -> " + ex.Message);
+            }
         }
 
         private void cmdDeleteItem_Click(object sender, RoutedEventArgs e)
@@ -75,17 +101,39 @@ namespace Group2_3280_Invoice
 
             try
             {
+                if (boxListItem.SelectedItem != null)
+                {
+                    clsItem currentItem = (clsItem)boxListItem.SelectedItem;
+                    String sItemCode = currentItem.ItemCode;
 
-                clsItem currentItem = (clsItem)boxListItem.SelectedItem;
-                String sItemCode = currentItem.ItemCode;
+                    int iRet = 0;
+                    String sSQLCheck = "SELECT * FROM LineItems WHERE ItemCode = '" + sItemCode + "'";
+                    db.ExecuteSQLStatement(sSQLCheck, ref iRet);
 
+                    if (iRet == 0)
+                    {
+                        String sSQL = "Delete FROM ItemDesc " +
+                        "Where ItemCode = '" + sItemCode + "'";
 
-                String sSQL = "Delete FROM ItemDesc " +
-                    "Where ItemCode = '" + sItemCode + " ' ";
+                        db.ExecuteNonQuery(sSQL);
+                        boxListItem.Items.Clear();
+                        UpdateBox();
 
-                db.ExecuteNonQuery(sSQL);
-                boxListItem.Items.Clear();
-                UpdateBox();
+                        txtName.Text = "";
+                        txtDesc.Text = "";
+                        txtCost.Text = "";
+                    }
+                    else
+                    {
+                        statusLabel.Content = "That item can't be deleted because it is on an invoice";
+                    }
+                    
+                }
+                else
+                {
+                    statusLabel.Content = "Please select an item to delete";
+                }
+                
             }
             catch (Exception ex)
             {
@@ -95,37 +143,54 @@ namespace Group2_3280_Invoice
 
         }
 
+        private void cmdEditItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (txtName.Text != "" && (txtDesc.Text != "" || txtCost.Text != ""))
+            {
+                if (txtCost.Text != "")
+                {
+                    String sSQL = "UPDATE ItemDesc SET Cost = '" + txtCost.Text + "' " +
+                        "WHERE ItemCode = '" + txtName.Text + "'";
+                    db.ExecuteNonQuery(sSQL);
+                    boxListItem.Items.Clear();
+                    UpdateBox();
+                    statusLabel.Content = "Item Edited";
+                }
+
+                if (txtDesc.Text != "")
+                {
+                    String sSQL = "UPDATE ItemDesc SET ItemDesc = '" + txtDesc.Text + "' " +
+                        "WHERE ItemCode = '" + txtName.Text + "'";
+                    db.ExecuteNonQuery(sSQL);
+                    boxListItem.Items.Clear();
+                    UpdateBox();
+                    statusLabel.Content = "Item Edited";
+                }
+            }
+            else
+            {
+                statusLabel.Content = "Please fill out the necessary information";
+            }
+            
+        }
+
         private void cmdClose_Click(object sender, RoutedEventArgs e)
         {
             this.Hide();
-        }
+        } 
 
-        private void cmdEditItem_Click(object sender, RoutedEventArgs e)
+        private void selectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (txtCost.Text != "")
+            clsItem item = new clsItem();
+            item = (clsItem)boxListItem.SelectedItem;
+            if (item != null)
             {
-                String sSQL = "UPDATE ItemDesc SET Cost = '" + txtCost.Text + "' " +
-                    "WHERE ItemCode = '" + txtName.Text + "'";
-                db.ExecuteNonQuery(sSQL);
-                boxListItem.Items.Clear();
-                UpdateBox();
+                txtName.Text = item.ItemCode;
+                txtDesc.Text = item.ItemDesc;
+                txtCost.Text = item.Cost;
+                statusLabel.Content = "";
             }
-
-            if (txtDesc.Text != "")
-            {
-                String sSQL = "UPDATE ItemDesc SET ItemDesc = '" + txtDesc.Text + "' " +
-                    "WHERE ItemCode = '" + txtName.Text + "'";
-                db.ExecuteNonQuery(sSQL);
-                boxListItem.Items.Clear();
-                UpdateBox();
-            }
-
-
-
         }
-
-
-
     }
 }
 
