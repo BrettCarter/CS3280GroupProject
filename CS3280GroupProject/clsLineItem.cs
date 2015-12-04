@@ -11,6 +11,11 @@ namespace CS3280GroupProject
         public String InvoiceNum { get; set; }
         public String LineItemNum { get; set; }
         public String ItemCode { get; set; }
+
+        clsLineItem()
+        {
+
+        }
         
 
         public override string ToString()
