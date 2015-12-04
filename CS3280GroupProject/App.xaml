@@ -4,6 +4,9 @@
 	x:Class="Group2_3280_Invoice.App"
 	StartupUri="frmMainMenu.xaml">
 	<Application.Resources>
-		<!-- Resources scoped at the Application level should be defined here. -->
-	</Application.Resources>
+		 <!--Resources scoped at the Application level should be defined here.--> 
+        <ResourceDictionary 
+                  Source="BureauBlue.xaml">
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

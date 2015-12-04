@@ -8,8 +8,8 @@
 
     <Grid x:Name="LayoutRoot">
         <Menu Height="26.4" Margin="0,-1.4,0,0" VerticalAlignment="Top">
-            <MenuItem x:Name="mnuUpdate" Header="Update" Height="26" Width="51" Click="mnuUpdate_Click"/>
-            <MenuItem x:Name="mnuSearch" Header="Search" Width="52" Click="mnuSearch_Click"/>
+            <MenuItem x:Name="mnuUpdate" Header="Update" Height="26" Width="106" Click="mnuUpdate_Click"/>
+            <MenuItem x:Name="mnuSearch" Header="Search" Width="114" Click="mnuSearch_Click"/>
         </Menu>
         <Button x:Name="cmdCreateNew" Content="Create New Invoice" HorizontalAlignment="Left" Margin="43,364,0,0" VerticalAlignment="Top" Width="132" Height="56" RenderTransformOrigin="0.454,-1.017" Click="cmdCreateNew_Click"/>
         <Button x:Name="cmdEdit" Content="Edit Invoice" Margin="241,364,0,29" HorizontalAlignment="Left" Width="132" Click="cmdEdit_Click"/>

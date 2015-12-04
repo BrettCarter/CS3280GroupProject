@@ -9,7 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using CS3280GroupProject;
 using System;
 using System.Diagnostics;
 using System.Windows;

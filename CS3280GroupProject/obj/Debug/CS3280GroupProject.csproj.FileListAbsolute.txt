@@ -95,3 +95,5 @@ C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS32
 C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.csproj.GenerateResource.Cache
 C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject_MarkupCompile.lref
 C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\Themes.baml
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\App.baml
+C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\obj\Debug\BureauBlue.baml
