@@ -22,5 +22,6 @@
         <Button x:Name="cmdClose" Content="Close" Margin="269,0,281.6,52.84" VerticalAlignment="Bottom" Click="cmdClose_Click"/>
         <Label x:Name="Add_Edit_Items" Content="Add/Edit Items" HorizontalAlignment="Left" Margin="235.517,36.466,0,0" VerticalAlignment="Top" FontSize="21.333" RenderTransformOrigin="0.452,0.313"/>
         <Label x:Name="statusLabel" Content="" HorizontalAlignment="Left" Margin="137,268,0,0" VerticalAlignment="Top" Width="355" HorizontalContentAlignment="Center"/>
+        <Label x:Name="statusLabelInvoice" Content="" HorizontalAlignment="Left" Margin="137,283.96,0,0" VerticalAlignment="Top" Width="355" HorizontalContentAlignment="Center"/>
     </Grid>
 </Window>

@@ -106,10 +106,12 @@ namespace Group2_3280_Invoice
                 {
                     clsItem currentItem = (clsItem)boxListItem.SelectedItem;
                     String sItemCode = currentItem.ItemCode;
+                    clsLineItem line;
+                    DataSet ds = new DataSet();
 
                     int iRet = 0;
                     String sSQLCheck = "SELECT * FROM LineItems WHERE ItemCode = '" + sItemCode + "'";
-                    db.ExecuteSQLStatement(sSQLCheck, ref iRet);
+                    ds = db.ExecuteSQLStatement(sSQLCheck, ref iRet);
 
                     if (iRet == 0)
                     {
@@ -126,8 +128,10 @@ namespace Group2_3280_Invoice
                     }
                     else
                     {
+
+                        //Following LineItem info added by JD
                         //DISPLAY THE INVOICES THAT THIS ITEM IS A PART OF
-                        
+                        line = new clsLineItem();
                         //StatusLabel
                         statusLabel.Content = "That item can't be deleted because it is on the following invoices: ";
                         
@@ -135,9 +139,9 @@ namespace Group2_3280_Invoice
                         for (int i = 0; i < iRet; i++)
                         {
                             //Get the InvoiceNum and add it on to StatusLabel based on the ItemCode
-                            
+                            line.InvoiceNum = ds.Tables[0].Rows[i][0].ToString();
                             //statusLabel.Content + InvoiceNum
-                            statusLabel.Content = statusLabel.Content;
+                            statusLabelInvoice.Content = statusLabelInvoice.Content + " " + line.InvoiceNum;
                         }
                     }
                     

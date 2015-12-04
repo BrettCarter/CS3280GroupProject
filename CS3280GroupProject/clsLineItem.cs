@@ -4,20 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS3280GroupProject
+namespace Group2_3280_Invoice
 {
-    class clsLineItem
+    public class clsLineItem
     {
+        /// <summary>
+        /// Invoice Number
+        /// </summary>
         public String InvoiceNum { get; set; }
+        /// <summary>
+        /// LineItemNumber
+        /// </summary>
         public String LineItemNum { get; set; }
+        /// <summary>
+        /// ItemCode
+        /// </summary>
         public String ItemCode { get; set; }
 
-        clsLineItem()
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public clsLineItem()
         {
 
         }
         
 
+        /// <summary>
+        /// Overide ToString()
+        /// </summary>
+        /// <returns>LineItem Table values : InvoiceNum, LineItemNum, Item Code</returns>
         public override string ToString()
         {
             try
