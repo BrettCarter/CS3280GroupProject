@@ -7,17 +7,33 @@
 	Title="frmSearch"
 	Width="640" Height="480">
 
-	<Grid x:Name="LayoutRoot">
-		<ListBox x:Name="listInvoice" HorizontalAlignment="Left" Margin="64.487,123.2,0,159.2" Width="180.8"/>
-		<Label Content="Invoice" HorizontalAlignment="Left" Margin="64.487,97.24,0,0" VerticalAlignment="Top"/>
-		<ComboBox x:Name="drpInvoice" Margin="307.4,177.6,198.2,0" VerticalAlignment="Top"/>
-		<ComboBox x:Name="drpDate" Margin="307.4,123.2,198.2,0" VerticalAlignment="Top"/>
-		<ComboBox x:Name="drpCharge" Margin="307.4,0,198.2,190.92" VerticalAlignment="Bottom"/>
-		<Button x:Name="cmdSelectInvoice" Content="Select Invoice" Margin="264.2,0,275.606,62.44" VerticalAlignment="Bottom" Click="cmdSelectInvoice_Click"/>
-		<Label Content="Date:" Margin="307.4,97.24,280.206,0" VerticalAlignment="Top" d:LayoutOverrides="Width"/>
-		<Label Content="Invoice #:" Margin="307.4,151.64,250.606,0" VerticalAlignment="Top"/>
-		<Label Content="Charge:" Margin="307.4,203.56,261.4,212.88" d:LayoutOverrides="Height"/>
-		<Label Content="Search" HorizontalAlignment="Left" Margin="264.2,29.6,0,0" VerticalAlignment="Top" FontSize="21.333"/>
-        <Button x:Name="btnUpdateSearch" Content="Update Search" HorizontalAlignment="Left" Margin="318,287,0,0" VerticalAlignment="Top" Width="103" Click="btnUpdateSearch_Click"/>
+    <Grid x:Name="LayoutRoot">
+        <ListBox x:Name="listInvoice" HorizontalAlignment="Left" Margin="64,140,0,126.4" Width="524"/>
+        <Label Content="Invoice" HorizontalAlignment="Left" Margin="64,97,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="drpInvoice" Margin="199,73,306.6,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="drpDate" Margin="46,73,459.6,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="drpCharge" Margin="345,0,160.6,349.4" VerticalAlignment="Bottom"/>
+        <Button x:Name="cmdSelectInvoice" Content="Select Invoice" Margin="267,0,272.6,80.4" VerticalAlignment="Bottom" Click="cmdSelectInvoice_Click"/>
+        <Label Content="Date:" Margin="46,52,541.6,0" VerticalAlignment="Top"/>
+        <Label Content="Invoice #:" Margin="199,52,358.6,0" VerticalAlignment="Top"/>
+        <Label Content="Search" HorizontalAlignment="Left" Margin="282,20,0,0" VerticalAlignment="Top" FontSize="21.333"/>
+        <Button x:Name="btnUpdateSearch" Content="Update Search" HorizontalAlignment="Left" Margin="500,73,0,0" VerticalAlignment="Top" Width="103" Click="btnUpdateSearch_Click"/>
+        <Label x:Name="label" Content="Charge:" HorizontalAlignment="Left" Margin="345,52,0,0" VerticalAlignment="Top" Width="57"/>
+        <Label x:Name="label1" Content="#" HorizontalAlignment="Left" Margin="85,119,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Date" HorizontalAlignment="Left" Margin="113,119,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label3" Content="Total Charge" HorizontalAlignment="Left" Margin="261,119,0,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="21" Margin="64,119,0,0" VerticalAlignment="Top" Width="524">
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="21" Margin="43.2,0,0,-1.8" Stroke="Black" VerticalAlignment="Top" Width="1"/>
+        </Border>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="19" Margin="255,120,0,0" Stroke="Black" VerticalAlignment="Top" Width="1" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
     </Grid>
 </Window>

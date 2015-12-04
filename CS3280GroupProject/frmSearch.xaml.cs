@@ -180,7 +180,7 @@ namespace Group2_3280_Invoice
             DataSet ds = new DataSet();
             clsInvoice invoice;
 
-            sSQL = "SELECT InvoiceNum, InvoiceDate, TotalCharge " +
+            sSQL = "SELECT DISTINCT InvoiceNum, InvoiceDate, TotalCharge " +
                 "FROM Invoices";
             ds = db.ExecuteSQLStatement(sSQL, ref iRet);
 
