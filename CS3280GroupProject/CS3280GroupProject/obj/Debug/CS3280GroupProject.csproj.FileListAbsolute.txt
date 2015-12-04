@@ -55,3 +55,22 @@ C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupPro
 C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.g.resources
 C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.Properties.Resources.resources
 C:\Users\Brett\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.csproj.GenerateResource.Cache
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\bin\Debug\CS3280GroupProject.exe.config
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.exe
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.pdb
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\bin\Debug\CS3280GroupProject.exe
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\bin\Debug\CS3280GroupProject.pdb
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.csprojResolveAssemblyReference.cache
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmMainMenu.baml
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmNewInvoice.baml
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmSearch.baml
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmUpdate.baml
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmMainMenu.g.cs
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmNewInvoice.g.cs
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmSearch.g.cs
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\frmUpdate.g.cs
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\App.g.cs
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject_MarkupCompile.cache
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.g.resources
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.Properties.Resources.resources
+C:\Users\Jacob Dockter\Source\Repos\CS3280GroupProject\CS3280GroupProject\CS3280GroupProject\obj\Debug\CS3280GroupProject.csproj.GenerateResource.Cache

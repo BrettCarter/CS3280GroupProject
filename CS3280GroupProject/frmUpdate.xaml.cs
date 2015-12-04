@@ -127,18 +127,11 @@ namespace Group2_3280_Invoice
                     else
                     {
                         //DISPLAY THE INVOICES THAT THIS ITEM IS A PART OF
-                        DataSet ds = new DataSet();
-
-                        //Add to this label
-                        statusLabel.Content = "That item can't be deleted because it is on the following invoices: ";
-                        /*
-                        //Select the InvoiceNum where the ItemCode = the current item code
-                        String sSQL = "SELECT InvoiceNum " +
-                        "FROM LineItems " +
-                        "WHERE ItemCode =" + sItemCode;
                         
-                        ds = db.ExecuteSQLStatement(sSQL, ref iRet);
-
+                        //StatusLabel
+                        statusLabel.Content = "That item can't be deleted because it is on the following invoices: ";
+                        
+                        
                         for (int i = 0; i < iRet; i++)
                         {
                             //Get the InvoiceNum and add it on to StatusLabel based on the ItemCode
@@ -146,7 +139,6 @@ namespace Group2_3280_Invoice
                             //statusLabel.Content + InvoiceNum
                             statusLabel.Content = statusLabel.Content;
                         }
-                        */
                     }
                     
                 }
